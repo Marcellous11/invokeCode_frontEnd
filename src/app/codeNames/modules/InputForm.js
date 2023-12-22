@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import DisplayCodeName from "./displayCodeName";
-import getName from "../../api/chatGPTresponse";
 import BasicAlerts from "../../errorAlert/missingData";
 import ChatGPTerror from "@/app/errorAlert/ChatGPTerror";
+import { randomNickname } from "nickname-generator";
 export default function InputForm() {
 	const [codeName, setCodeName] = useState();
 	const [myAlert, setMyAlert] = useState(false);
@@ -23,37 +23,15 @@ export default function InputForm() {
 		}));
 	};
 
-	// const successfulRequest = async () => {
-	// 	let name = await getName(userEntry.fname, userEntry.Months);
-
-	// 	if (name.data) {
-	// 		setApiFail(false);
-	// 		setCodeName(name.data);
-	// 		setUserEntry(inputDefault);
-	// 	} else {
-	// 		setApiFail(true);
-	// 		setApiFailMessage(name);
-	// 	}
-	// };
-
 	async function add(e) {
 		e.preventDefault();
 		if (userEntry.fname.trim() === "" || userEntry.Months.trim() === "") {
 			setMyAlert(true);
 		} else {
 			if (codeName !== "") setMyAlert(false);
-			// successfulRequest();
-			let name = await getName(userEntry.fname, userEntry.Months);
-			console.log(name);
-			if (name.data.cause) {
-				console.log(name.data.cause.message);
-				setApiFail(true);
-				setApiFailMessage("Network Error");
-			} else {
-				setApiFail(false);
-				setCodeName(name.data);
-				setUserEntry(inputDefault);
-			}
+			setApiFail(false);
+			setCodeName(randomNickname());
+			setUserEntry(inputDefault);
 		}
 	}
 

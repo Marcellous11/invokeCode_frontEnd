@@ -9,7 +9,7 @@ export default function GridOptions({ name }) {
 					path={"codeNames"}
 				/>
 				<MenuOption
-					iconImage="/Screenshot_codeName.png"
+					iconImage="/Screenshot 2023-11-19 at 12.03.33 PM.png"
 					iconName="User Data"
 					path={"userData"}
 				/>
