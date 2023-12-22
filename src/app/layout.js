@@ -2,7 +2,6 @@
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 import React from "react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
 	title: "Create Next App",
@@ -17,10 +16,7 @@ const font = Montserrat({
 export default function RootLayout({ children }) {
 	return (
 		<html lang="en" className={font.className}>
-			<body className="h-full bg-cover bg-slate-100 ">
-				<SpeedInsights></SpeedInsights>
-				{children}
-			</body>
+			<body className="h-full bg-cover bg-slate-100 ">{children}</body>
 		</html>
 	);
 }
